@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" id="NCF-Pp-LoU" userLabel="SettingTableViewCell" customClass="SettingTableViewCell" customModule="SimpleSugars" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NCF-Pp-LoU" id="iaS-VB-SOo">
+                <frame key="frameInset" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellDisclosureIndicator_8x12_" translatesAutoresizingMaskIntoConstraints="NO" id="Q4D-Qw-v5A">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="06O-Q5-cLn"/>
+                            <constraint firstAttribute="width" constant="9" id="CNP-a5-MEN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2K-sa-d9L">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA6-Ku-xbn"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5H-EG-nQh">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_icon_score_21x21_" translatesAutoresizingMaskIntoConstraints="NO" id="noG-6T-Dc6">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6DV-6b-Fgb"/>
+                            <constraint firstAttribute="width" constant="21" id="sic-GP-kLU"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kA6-Ku-xbn" firstAttribute="centerY" secondItem="iaS-VB-SOo" secondAttribute="centerY" id="0Nc-sd-s8c"/>
+                    <constraint firstItem="S5H-EG-nQh" firstAttribute="leading" secondItem="noG-6T-Dc6" secondAttribute="trailing" constant="10" id="BKF-7q-HC2"/>
+                    <constraint firstItem="Q4D-Qw-v5A" firstAttribute="leading" secondItem="a2K-sa-d9L" secondAttribute="trailing" constant="10" id="CIz-6R-4JP"/>
+                    <constraint firstAttribute="trailing" secondItem="Q4D-Qw-v5A" secondAttribute="trailing" constant="10" id="EL7-1J-gzG"/>
+                    <constraint firstItem="noG-6T-Dc6" firstAttribute="centerY" secondItem="iaS-VB-SOo" secondAttribute="centerY" id="KUN-R9-mQa"/>
+                    <constraint firstAttribute="trailing" secondItem="kA6-Ku-xbn" secondAttribute="trailing" constant="10" id="M8o-GV-nSc"/>
+                    <constraint firstItem="kA6-Ku-xbn" firstAttribute="trailing" secondItem="a2K-sa-d9L" secondAttribute="trailing" id="QPP-Wr-McZ"/>
+                    <constraint firstAttribute="bottom" secondItem="S5H-EG-nQh" secondAttribute="bottom" id="THt-eZ-ndl"/>
+                    <constraint firstItem="S5H-EG-nQh" firstAttribute="top" secondItem="iaS-VB-SOo" secondAttribute="top" id="ZUT-2H-M7f"/>
+                    <constraint firstAttribute="bottom" secondItem="a2K-sa-d9L" secondAttribute="bottom" id="b8Y-fV-dvj"/>
+                    <constraint firstItem="Q4D-Qw-v5A" firstAttribute="centerY" secondItem="iaS-VB-SOo" secondAttribute="centerY" id="qqy-lU-55W"/>
+                    <constraint firstItem="a2K-sa-d9L" firstAttribute="top" secondItem="iaS-VB-SOo" secondAttribute="top" id="tmH-Dl-i8q"/>
+                    <constraint firstItem="noG-6T-Dc6" firstAttribute="leading" secondItem="iaS-VB-SOo" secondAttribute="leading" constant="10" id="tzr-Xt-Gvk"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="QPP-Wr-McZ"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="disclosureIndicator" destination="Q4D-Qw-v5A" id="iCZ-TI-1NE"/>
+                <outlet property="iconImageView" destination="noG-6T-Dc6" id="6cL-bZ-PUe"/>
+                <outlet property="leftLabel" destination="S5H-EG-nQh" id="MlL-n6-Qqv"/>
+                <outlet property="rightLabel" destination="a2K-sa-d9L" id="tZO-ae-W94"/>
+                <outlet property="switchView" destination="kA6-Ku-xbn" id="uoh-Ii-QTk"/>
+            </connections>
+            <point key="canvasLocation" x="334" y="242.25"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CellDisclosureIndicator_8x12_" width="9" height="16"/>
+        <image name="more_icon_score_21x21_" width="21" height="21"/>
+    </resources>
+</document>

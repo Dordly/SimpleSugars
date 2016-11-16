@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qdg-gL-X7Q" customClass="DetailBottomView" customModule="SimpleSugars" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuk-of-EIu">
+                    <rect key="frame" x="15" y="6" width="100" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="F3A-2z-V9n"/>
+                        <constraint firstAttribute="height" constant="32" id="y8b-hC-h1B"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title=" 喜欢" image="content-details_like_16x16_">
+                        <color key="titleColor" red="0.90980392160000001" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectButtonClick:" destination="qdg-gL-X7Q" eventType="touchUpInside" id="tvl-xE-faR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE4-tb-QZx">
+                    <rect key="frame" x="133" y="6" width="198" height="32"/>
+                    <color key="backgroundColor" red="0.90980392160000001" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="Gci-EW-Yma"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="去天猫购买">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectButtonClick:" destination="qdg-gL-X7Q" eventType="touchUpInside" id="JRp-vi-cIM"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPX-RF-eMp">
+                    <rect key="frame" x="0.0" y="0.0" width="346" height="1"/>
+                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="237-Y9-cKV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="FPX-RF-eMp" firstAttribute="top" secondItem="qdg-gL-X7Q" secondAttribute="top" id="96u-yf-5kd"/>
+                <constraint firstAttribute="trailing" secondItem="eE4-tb-QZx" secondAttribute="trailing" constant="15" id="EIg-gm-9Lu"/>
+                <constraint firstItem="eE4-tb-QZx" firstAttribute="leading" secondItem="Yuk-of-EIu" secondAttribute="trailing" constant="18" id="JxP-ul-DCa"/>
+                <constraint firstItem="Yuk-of-EIu" firstAttribute="centerY" secondItem="qdg-gL-X7Q" secondAttribute="centerY" id="OZX-A2-06p"/>
+                <constraint firstItem="Yuk-of-EIu" firstAttribute="leading" secondItem="qdg-gL-X7Q" secondAttribute="leading" constant="15" id="p4X-Hv-w9O"/>
+                <constraint firstItem="FPX-RF-eMp" firstAttribute="leading" secondItem="qdg-gL-X7Q" secondAttribute="leading" id="qpk-j6-iLN"/>
+                <constraint firstAttribute="trailing" secondItem="FPX-RF-eMp" secondAttribute="trailing" id="soG-1u-o41"/>
+                <constraint firstItem="eE4-tb-QZx" firstAttribute="centerY" secondItem="qdg-gL-X7Q" secondAttribute="centerY" id="zZ0-Nd-bMp"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="goBuyButton" destination="eE4-tb-QZx" id="hfF-Dx-6Mw"/>
+                <outlet property="likeButton" destination="Yuk-of-EIu" id="OcM-Jh-270"/>
+            </connections>
+            <point key="canvasLocation" x="623" y="230.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="content-details_like_16x16_" width="16" height="16"/>
+    </resources>
+</document>
