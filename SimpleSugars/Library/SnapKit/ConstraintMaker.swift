@@ -27,133 +27,138 @@
     import AppKit
 #endif
 
-open class ConstraintMaker {
+public class ConstraintMaker {
     
-    open var left: ConstraintMakerExtendable {
+    public var left: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.left)
     }
     
-    open var top: ConstraintMakerExtendable {
+    public var top: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.top)
     }
     
-    open var bottom: ConstraintMakerExtendable {
+    public var bottom: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.bottom)
     }
     
-    open var right: ConstraintMakerExtendable {
+    public var right: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.right)
     }
     
-    open var leading: ConstraintMakerExtendable {
+    public var leading: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.leading)
     }
     
-    open var trailing: ConstraintMakerExtendable {
+    public var trailing: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.trailing)
     }
     
-    open var width: ConstraintMakerExtendable {
+    public var width: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.width)
     }
     
-    open var height: ConstraintMakerExtendable {
+    public var height: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.height)
     }
     
-    open var centerX: ConstraintMakerExtendable {
+    public var centerX: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerX)
     }
     
-    open var centerY: ConstraintMakerExtendable {
+    public var centerY: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerY)
     }
     
     @available(*, deprecated:3.0, message:"Use lastBaseline instead")
-    open var baseline: ConstraintMakerExtendable {
+    public var baseline: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.lastBaseline)
     }
     
-    open var lastBaseline: ConstraintMakerExtendable {
+    public var lastBaseline: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.lastBaseline)
     }
     
     @available(iOS 8.0, OSX 10.11, *)
-    open var firstBaseline: ConstraintMakerExtendable {
+    public var firstBaseline: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.firstBaseline)
     }
     
     @available(iOS 8.0, *)
-    open var leftMargin: ConstraintMakerExtendable {
+    public var leftMargin: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.leftMargin)
     }
     
     @available(iOS 8.0, *)
-    open var rightMargin: ConstraintMakerExtendable {
+    public var rightMargin: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.rightMargin)
     }
     
     @available(iOS 8.0, *)
-    open var bottomMargin: ConstraintMakerExtendable {
+    public var topMargin: ConstraintMakerExtendable {
+        return self.makeExtendableWithAttributes(.topMargin)
+    }
+    
+    @available(iOS 8.0, *)
+    public var bottomMargin: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.bottomMargin)
     }
     
     @available(iOS 8.0, *)
-    open var leadingMargin: ConstraintMakerExtendable {
+    public var leadingMargin: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.leadingMargin)
     }
     
     @available(iOS 8.0, *)
-    open var trailingMargin: ConstraintMakerExtendable {
+    public var trailingMargin: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.trailingMargin)
     }
     
     @available(iOS 8.0, *)
-    open var centerXWithinMargins: ConstraintMakerExtendable {
+    public var centerXWithinMargins: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerXWithinMargins)
     }
     
     @available(iOS 8.0, *)
-    open var centerYWithinMargins: ConstraintMakerExtendable {
+    public var centerYWithinMargins: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerYWithinMargins)
     }
     
-    open var edges: ConstraintMakerExtendable {
+    public var edges: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.edges)
     }
-    open var size: ConstraintMakerExtendable {
+    public var size: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.size)
     }
-    open var center: ConstraintMakerExtendable {
+    public var center: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.center)
     }
     
     @available(iOS 8.0, *)
-    open var margins: ConstraintMakerExtendable {
+    public var margins: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.margins)
     }
     
     @available(iOS 8.0, *)
-    open var centerWithinMargins: ConstraintMakerExtendable {
+    public var centerWithinMargins: ConstraintMakerExtendable {
         return self.makeExtendableWithAttributes(.centerWithinMargins)
     }
     
-    fileprivate let view: ConstraintView
-    fileprivate var descriptions = [ConstraintDescription]()
+    private let item: LayoutConstraintItem
+    private var descriptions = [ConstraintDescription]()
     
-    internal init(view: ConstraintView) {
-        self.view = view
-        self.view.translatesAutoresizingMaskIntoConstraints = false
+    internal init(item: LayoutConstraintItem) {
+        self.item = item
+        self.item.prepare()
     }
     
     internal func makeExtendableWithAttributes(_ attributes: ConstraintAttributes) -> ConstraintMakerExtendable {
-        let description = ConstraintDescription(view: self.view, attributes: attributes)
+        let description = ConstraintDescription(item: self.item, attributes: attributes)
         self.descriptions.append(description)
         return ConstraintMakerExtendable(description)
     }
     
-    internal static func prepareConstraints(_ view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
-        let maker = ConstraintMaker(view: view)
+    internal static func prepareConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
+        let maker = ConstraintMaker(item: item)
         closure(maker)
         let constraints = maker.descriptions
             .map { $0.constraint }
@@ -162,42 +167,42 @@ open class ConstraintMaker {
         return constraints
     }
     
-    internal static func makeConstraints(_ view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
-        let maker = ConstraintMaker(view: view)
+    internal static func makeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
+        let maker = ConstraintMaker(item: item)
         closure(maker)
         let constraints = maker.descriptions
             .map { $0.constraint }
             .filter { $0 != nil }
             .map { $0! }
         for constraint in constraints {
-            constraint.activateIfNeeded(false)
+            constraint.activateIfNeeded(updatingExisting: false)
         }
     }
     
-    internal static func remakeConstraints(_ view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
-        self.removeConstraints(view)
-        self.makeConstraints(view, closure: closure)
+    internal static func remakeConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
+        self.removeConstraints(item: item)
+        self.makeConstraints(item: item, closure: closure)
     }
     
-    internal static func updateConstraints(_ view: ConstraintView, closure: (_ make: ConstraintMaker) -> Void) {
-        guard view.snp.constraints.count > 0 else {
-            self.makeConstraints(view, closure: closure)
+    internal static func updateConstraints(item: LayoutConstraintItem, closure: (_ make: ConstraintMaker) -> Void) {
+        guard item.constraints.count > 0 else {
+            self.makeConstraints(item: item, closure: closure)
             return
         }
         
-        let maker = ConstraintMaker(view: view)
+        let maker = ConstraintMaker(item: item)
         closure(maker)
         let constraints = maker.descriptions
             .map { $0.constraint }
             .filter { $0 != nil }
             .map { $0! }
         for constraint in constraints {
-            constraint.activateIfNeeded(true)
+            constraint.activateIfNeeded(updatingExisting: true)
         }
     }
     
-    internal static func removeConstraints(_ view: ConstraintView) {
-        let constraints = view.snp.constraints
+    internal static func removeConstraints(item: LayoutConstraintItem) {
+        let constraints = item.constraints
         for constraint in constraints {
             constraint.deactivateIfNeeded()
         }
