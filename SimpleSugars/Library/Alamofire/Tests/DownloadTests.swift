@@ -102,6 +102,34 @@ class DownloadResponseTestCase: BaseTestCase {
         }
     }
 
+    func testCancelledDownloadRequest() {
+        // Given
+        let fileURL = randomCachesFileURL
+        let numberOfLines = 100
+        let urlString = "https://httpbin.org/stream/\(numberOfLines)"
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in (fileURL, []) }
+
+        let expectation = self.expectation(description: "Cancelled download request should not download data to file")
+        var response: DefaultDownloadResponse?
+
+        // When
+        Alamofire.download(urlString, to: destination)
+            .response { resp in
+                response = resp
+                expectation.fulfill()
+            }
+            .cancel()
+
+        waitForExpectations(timeout: timeout, handler: nil)
+
+        // Then
+        XCTAssertNotNil(response?.request)
+        XCTAssertNil(response?.response)
+        XCTAssertNil(response?.destinationURL)
+        XCTAssertNil(response?.resumeData)
+        XCTAssertNotNil(response?.error)
+    }
+
     func testDownloadRequestWithProgress() {
         // Given
         let randomBytes = 4 * 1024 * 1024
@@ -334,7 +362,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -452,5 +480,66 @@ class DownloadResumeDataTestCase: BaseTestCase {
         XCTAssertNotNil(download.resumeData)
 
         XCTAssertEqual(response?.resumeData, download.resumeData)
+    }
+
+    func testThatCancelledDownloadCanBeResumedWithResumeData() {
+        // Given
+        let expectation1 = self.expectation(description: "Download should be cancelled")
+        var cancelled = false
+
+        var response1: DownloadResponse<Data>?
+
+        // When
+        let download = Alamofire.download(urlString)
+        download.downloadProgress { progress in
+            guard !cancelled else { return }
+
+            if progress.fractionCompleted > 0.4 {
+                download.cancel()
+                cancelled = true
+            }
+        }
+        download.responseData { resp in
+            response1 = resp
+            expectation1.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout, handler: nil)
+
+        guard let resumeData = download.resumeData else {
+            XCTFail("resumeData should not be nil")
+            return
+        }
+
+        let expectation2 = self.expectation(description: "Download should complete")
+
+        var progressValues: [Double] = []
+        var response2: DownloadResponse<Data>?
+
+        Alamofire.download(resumingWith: resumeData)
+            .downloadProgress { progress in
+                progressValues.append(progress.fractionCompleted)
+            }
+            .responseData { resp in
+                response2 = resp
+                expectation2.fulfill()
+            }
+
+        waitForExpectations(timeout: timeout, handler: nil)
+
+        // Then
+        XCTAssertNotNil(response1?.request)
+        XCTAssertNotNil(response1?.response)
+        XCTAssertNil(response1?.destinationURL)
+        XCTAssertEqual(response1?.result.isFailure, true)
+        XCTAssertNotNil(response1?.result.error)
+
+        XCTAssertNotNil(response2?.response)
+        XCTAssertNotNil(response2?.temporaryURL)
+        XCTAssertNil(response2?.destinationURL)
+        XCTAssertEqual(response2?.result.isSuccess, true)
+        XCTAssertNil(response2?.result.error)
+
+        progressValues.forEach { XCTAssertGreaterThanOrEqual($0, 0.4) }
     }
 }

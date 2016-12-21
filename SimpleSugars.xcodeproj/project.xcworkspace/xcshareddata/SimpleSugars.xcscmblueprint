@@ -1,21 +1,24 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C64DA25518236FA09900D26BCEEC89CD7B26C177",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "e839bdbc-3c3a-2343-bebf-7c9b01767557++7026" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : 0,
     "e839bdbc-3c3a-2343-bebf-7c9b01767557++7026" : 0,
+    "C64DA25518236FA09900D26BCEEC89CD7B26C177" : 9223372036854775807,
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 0,
-    "956D2B21DD155C49504BB67697A67F7C5351A353" : 0,
-    "E084C86B03F81D63323C9E7510697EA528A758C7" : 0
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C17C6D68-8E8D-4956-922D-64E323117275",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : "SimpleSugars\/SimpleSugars\/Library\/ReactiveCocoa\/Carthage\/Checkouts\/xcconfigs\/",
     "e839bdbc-3c3a-2343-bebf-7c9b01767557++7026" : "BusinessShow\/BusinessShow\/%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6\/Alamofire\/",
+    "C64DA25518236FA09900D26BCEEC89CD7B26C177" : "SimpleSugars\/",
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "SimpleSugars\/SimpleSugars\/Library\/ReactiveCocoa\/",
-    "956D2B21DD155C49504BB67697A67F7C5351A353" : "SimpleSugars\/SimpleSugars\/Library\/ReactiveCocoa\/Carthage\/Checkouts\/Result\/",
-    "E084C86B03F81D63323C9E7510697EA528A758C7" : "SimpleSugars\/SimpleSugars\/Library\/ReactiveCocoa\/Carthage\/Checkouts\/xcconfigs\/"
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : "SimpleSugars\/SimpleSugars\/Library\/ReactiveCocoa\/Carthage\/Checkouts\/Result\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SimpleSugars",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -30,6 +33,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "956D2B21DD155C49504BB67697A67F7C5351A353"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yuanweiphone\/SimpleSugars.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C64DA25518236FA09900D26BCEEC89CD7B26C177"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jspahrsummers\/xcconfigs.git",

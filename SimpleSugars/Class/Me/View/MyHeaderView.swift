@@ -91,7 +91,7 @@ class MyHeaderView: UIView {
         }
         
         headerView.iconButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(headerView.centerX)
+            make.centerX.equalTo(headerView.snp.centerX)
             make.size.equalTo(CGSize(width: 75, height: 75))
             make.top.equalTo(headerView.snp.top).offset(70)
         }

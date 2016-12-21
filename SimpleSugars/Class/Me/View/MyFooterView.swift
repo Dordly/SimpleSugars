@@ -39,12 +39,11 @@ class MyFooterView: UIView {
             make.size.equalTo(CGSize(width: 50, height: 50))
             make.centerX.equalTo(footerView.snp.centerX)
             make.centerY.equalTo(footerView.snp.centerY).offset(-30)
-//            make.center.equalTo(footerView.snp_center)
         }
         
         footerView.messageLabel.snp.makeConstraints { (make) in
             make.top.equalTo(footerView.blankButton.snp.bottom).offset(10)
-            make.centerX.equalTo(footerView.centerX)
+            make.centerX.equalTo(footerView.snp.centerX)
         }
 
         return footerView

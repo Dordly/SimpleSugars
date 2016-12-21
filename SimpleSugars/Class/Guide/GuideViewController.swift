@@ -47,12 +47,9 @@ class GuideViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GuideCollectionViewCell
         cell.imageIndex = (indexPath as NSIndexPath).item
-        if (indexPath as NSIndexPath).item == 3
-        {
+        if (indexPath as NSIndexPath).item == 3 {
             cell.startButton.isHidden = false
-        }
-        else
-        {
+        } else {
             cell.startButton.isHidden = true
         }
         return cell
@@ -107,7 +104,7 @@ private class GuideCollectionViewCell: UICollectionViewCell {
         startButton.snp.makeConstraints { (make) in
             make.bottom.equalTo(contentView.snp.bottom).offset(-50)
             make.size.equalTo(CGSize(width: 150, height: 40))
-            make.centerX.equalTo(0)
+            make.centerX.equalTo(contentView.snp.centerX)
         }
     }
     
